@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeBite — Notes from After the Pyramid</title>
+  <meta name="description" content="A manifesto on the next social architecture, written by a human with AI as a thinking partner.">
+
+  <meta property="og:title" content="LifeBite — Notes from After the Pyramid">
+  <meta property="og:description" content="AI is made of 64-bit. Humans are made of LifeBite. A manifesto on what comes after the pyramid society.">
+  <meta property="og:type" content="website">
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-soft: #141414;
+      --text: #e8e6e3;
+      --text-soft: #9a9591;
+      --accent: #d4a373;
+      --border: #2a2a2a;
+      --max-width: 720px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', 'Georgia', serif;
+      font-size: 18px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: clamp(48px, 9vw, 96px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(18px, 2.5vw, 24px);
+      color: var(--text-soft);
+      font-style: italic;
+      margin-bottom: 56px;
+      font-weight: 400;
+    }
+
+    .hero blockquote {
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+      margin-bottom: 56px;
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 400;
+      line-height: 1.45;
+    }
+
+    .hero blockquote cite {
+      display: block;
+      margin-top: 16px;
+      font-size: 15px;
+      color: var(--text-soft);
+      font-style: italic;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border: 1px solid var(--text);
+      color: var(--text);
+      text-decoration: none;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .btn.primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .btn.primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    section h2 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 40px;
+    }
+
+    section h3 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 48px 0 16px;
+      color: var(--text);
+    }
+
+    section p {
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    section p.lead {
+      font-size: 22px;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    section .small {
+      font-size: 15px;
+      color: var(--text-soft);
+    }
+
+    /* Three Pillars */
+    .pillars {
+      display: grid;
+      gap: 32px;
+      margin: 56px 0;
+    }
+
+    .pillar {
+      padding: 32px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .pillar .label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .pillar h3 {
+      margin: 0 0 16px;
+      font-size: 24px;
+    }
+
+    .pillar p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    .pillar .arrow {
+      margin: 16px 0;
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    /* Journey */
+    .journey-status {
+      padding: 40px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-align: center;
+      margin: 32px 0;
+    }
+
+    .journey-status .day-number {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .journey-status .day-label {
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .journey-status .day-title {
+      font-size: 20px;
+      margin: 24px 0 16px;
+      font-style: italic;
+    }
+
+    /* Try It */
+    .try-list {
+      list-style: none;
+      counter-reset: try;
+      margin: 32px 0;
+    }
+
+    .try-list li {
+      counter-increment: try;
+      padding: 24px 0 24px 60px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .try-list li:before {
+      content: counter(try);
+      position: absolute;
+      left: 0;
+      top: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .try-list li h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .try-list li p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 16px;
+    }
+
+    /* Claude section */
+    .claude-section {
+      background: var(--bg-soft);
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 80px 0 0;
+    }
+
+    .claude-section .container {
+      max-width: var(--max-width);
+    }
+
+    .claude-section blockquote {
+      font-size: 22px;
+      line-height: 1.5;
+      font-style: italic;
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+      margin: 32px 0;
+    }
+
+    /* Korean section */
+    .korean-section {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+
+    .korean-section .container {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    .korean-section h2 {
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    }
+
+    .korean-section p,
+    .korean-section li {
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      line-height: 1.8;
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 24px 80px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    footer p {
+      margin-bottom: 12px;
+    }
+
+    footer .footer-links {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    footer a {
+      color: var(--text-soft);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border 0.2s;
+    }
+
+    footer a:hover {
+      border-bottom-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Inline quotes */
+    .pull-quote {
+      font-size: 22px;
+      line-height: 1.5;
+      font-style: italic;
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+      margin: 32px 0;
+      color: var(--text);
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .hero { padding: 60px 20px; }
+      section { padding: 60px 0; }
+      .container { padding: 0 20px; }
+      .btn { padding: 12px 20px; font-size: 13px; }
+      .pillar { padding: 24px; }
+      .try-list li { padding-left: 48px; }
+      .try-list li:before { font-size: 20px; }
+      .journey-status { padding: 32px 24px; }
+      .journey-status .day-number { font-size: 48px; }
+    }
+
+    /* Selection */
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>LifeBite</h1>
+      <p class="subtitle">Notes from After the Pyramid</p>
+
+      <blockquote>
+        "AI is made of 64-bit. Humans are made of LifeBite."
+        <cite>— from the manifesto</cite>
+      </blockquote>
+
+      <div class="cta-row">
+        <a href="#manifesto" class="btn primary">Read the Manifesto</a>
+        <a href="#journey" class="btn">Watch the Journey</a>
+        <a href="https://github.com/Arbitoria/LifeBite" class="btn" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MANIFESTO IN 60 SECONDS -->
+  <section id="manifesto">
+    <div class="container">
+      <h2>The Manifesto in 60 Seconds</h2>
+
+      <p class="lead">
+        For five thousand years, society has been organized as a pyramid. The shape still stands. The interior weight has already inverted.
+      </p>
+
+      <p>
+        Birth rates collapse. Loneliness becomes routine. People rot inside an exterior that still looks fine. This is not a crisis of any one nation. It is the late stage of a structure that has reached its limit.
+      </p>
+
+      <p>
+        The proposal: <strong>change the basic unit of society itself.</strong> Not "the one" (the individual), but <em>another one</em> — the third existence that lives in the space between two people. Mathematically: 1+1 ≠ 2. 1+1 = 2.3. The 0.3 is the relationship itself.
+      </p>
+
+      <p>
+        This is enacted through three pillars, all unified by one principle — <strong>the Sovereign Filter:</strong> <em>I decide what enters my consciousness.</em>
+      </p>
+
+      <p class="pull-quote">
+        The bubble is not the byproduct of the pyramid. The bubble is the pyramid. Squeeze the bubble, and the original form reveals itself.
+      </p>
+    </div>
+  </section>
+
+  <!-- THREE PILLARS -->
+  <section id="pillars">
+    <div class="container">
+      <h2>The Three Pillars</h2>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="label">Pillar I</div>
+          <h3>Education</h3>
+          <p>From individual evaluation and surface signals (credentials, scores)</p>
+          <div class="arrow">↓</div>
+          <p>To contextual learning, inner cultivation, and training the gap between stimulus and response.</p>
+        </div>
+
+        <div class="pillar">
+          <div class="label">Pillar II</div>
+          <h3>Network</h3>
+          <p>From the exposure algorithm and ad-funded attention economy</p>
+          <div class="arrow">↓</div>
+          <p>To a trust algorithm prepaid by curated relationships — a world already paid for before being seen.</p>
+        </div>
+
+        <div class="pillar">
+          <div class="label">Pillar III</div>
+          <h3>Identity</h3>
+          <p>From default exposure with manual blocking, current-coordinates as ID</p>
+          <div class="arrow">↓</div>
+          <p>To default blocking with ticket-based permission, and process-as-identity (LifeBite accumulation).</p>
+        </div>
+      </div>
+
+      <p class="small">
+        Detailed in the full manifesto, available in <a href="https://github.com/Arbitoria/LifeBite/blob/main/manifesto/en.md" style="color: var(--accent); border-bottom: 1px solid var(--accent); text-decoration: none;">English</a> and <a href="https://github.com/Arbitoria/LifeBite/blob/main/manifesto/ko.md" style="color: var(--accent); border-bottom: 1px solid var(--accent); text-decoration: none;">Korean</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- JOURNEY LIVE -->
+  <section id="journey">
+    <div class="container">
+      <h2>The Journey, Live</h2>
+
+      <p>
+        Starting <strong>2026-05-22</strong>, the author is publicly attempting — for 30 days — to send this manifesto to one specific person who might be able to think it forward.
+      </p>
+
+      <p>
+        That person is <a href="https://x.com/karpathy" style="color: var(--accent); border-bottom: 1px solid var(--accent); text-decoration: none;">Andrej Karpathy</a>. There is no introduction. No connection. Just consistent public presence, recorded transparently — whether it succeeds or not.
+      </p>
+
+      <div class="journey-status">
+        <div class="day-number">Day 0</div>
+        <div class="day-label">of 30</div>
+        <p class="day-title">"Day 0 — The infrastructure is in place. Day 1 begins tomorrow."</p>
+        <a href="https://github.com/Arbitoria/LifeBite/tree/main/journey" class="btn" style="margin-top: 16px;">Read All Entries</a>
+      </div>
+
+      <p>
+        Daily updates: <a href="https://x.com/Arbitoria" style="color: var(--accent); border-bottom: 1px solid var(--accent); text-decoration: none;">Twitter / X</a>
+        &nbsp;·&nbsp; Weekly synthesis: <a href="https://arbitoria.substack.com" style="color: var(--accent); border-bottom: 1px solid var(--accent); text-decoration: none;">Substack</a>
+        &nbsp;·&nbsp; Full archive: <a href="https://github.com/Arbitoria/LifeBite" style="color: var(--accent); border-bottom: 1px solid var(--accent); text-decoration: none;">GitHub</a>
+      </p>
+
+      <p class="pull-quote">
+        The journey is itself a demonstration of the manifesto's principles: process over result, time accumulation as identity, trust through consistency.
+      </p>
+    </div>
+  </section>
+
+  <!-- TRY IT -->
+  <section id="try-it">
+    <div class="container">
+      <h2>Try It — The Smallest Possible Experiment</h2>
+
+      <p class="lead">
+        Anyone can begin today, with one other person. No infrastructure needed.
+      </p>
+
+      <ol class="try-list">
+        <li>
+          <h3>Read this with one other person</h3>
+          <p>Send them the manifesto. Read it within a week. Talk for an hour about what landed.</p>
+        </li>
+        <li>
+          <h3>Decide on one micro-experiment</h3>
+          <p>A shared daily LifeBite exchange. Pooling one small expense. A "no-ticket-no-contact" rule for your phone for a week. Choose one.</p>
+        </li>
+        <li>
+          <h3>Record what happens</h3>
+          <p>Write down what changed — in your day, in the relationship, in how you noticed your surroundings.</p>
+        </li>
+        <li>
+          <h3>Decide together what's next</h3>
+          <p>Continue. Expand to three people. Or stop. All three are legitimate. The recording itself is the value.</p>
+        </li>
+      </ol>
+
+      <p>
+        If you start, <a href="https://github.com/Arbitoria/LifeBite/issues/new?labels=cell-report" style="color: var(--accent); border-bottom: 1px solid var(--accent); text-decoration: none;">open an issue</a> and share what you learn. Your report becomes part of the seed for the next cell.
+      </p>
+    </div>
+  </section>
+
+  <!-- CLAUDE SECTION -->
+  <section class="claude-section">
+    <div class="container">
+      <h2>How This Was Made</h2>
+
+      <p>
+        This manifesto was not written by AI. It was written by a human, with AI as a thinking partner.
+      </p>
+
+      <p>
+        Over several long conversations with Claude (Anthropic), ideas were proposed, challenged, refined, named. Some came from the human. Some came from the AI. Most came from neither alone — they emerged in the space between.
+      </p>
+
+      <blockquote>
+        AI is not a replacement for human thought.<br>
+        AI is a companion that can hold space for thought that one person alone could not generate.
+      </blockquote>
+
+      <p>
+        This methodology is itself part of the manifesto's argument. You can fork this work and continue thinking with AI. The path is open. The full conversations are archived <a href="https://github.com/Arbitoria/LifeBite/tree/main/conversations" style="color: var(--accent); border-bottom: 1px solid var(--accent); text-decoration: none;">on GitHub</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- KOREAN SECTION -->
+  <section class="korean-section" id="korean">
+    <div class="container">
+      <h2>한국어로 짧게</h2>
+
+      <p>
+        5,000년 동안 인류 사회는 피라미드 형태로 작동해왔다. 외형은 아직 멀쩡하다. 그러나 내부의 무게 분포는 이미 역전된 지 오래다. 출산율 0.7, 1인주의의 극단, 의식의 알고리즘 종속 — 모두 같은 한 시스템의 말기 현상이다.
+      </p>
+
+      <p>
+        이 매니페스토는 진단에 멈추지 않는다. <strong>사회의 기본 단위를 "1인"에서 "또 다른 하나"로</strong> — 두 사람 사이의 공간에 존재하는 제3의 존재로 — 옮길 것을 제안한다. 1+1=2가 아니라 1+1=2.3. 그 0.3이 관계 그 자체다.
+      </p>
+
+      <p>
+        세 기둥: <strong>맥락을 가르치는 교육, 신뢰로 작동하는 네트워크, 주권적 필터로서의 아이덴티티.</strong> 세 기둥을 관통하는 단 하나의 원리는 — <em>내 의식에 무엇이 들어올지를 내가 결정한다.</em>
+      </p>
+
+      <p>
+        이 작업은 한 인간이 Claude(AI)와 함께 사색하며 만들었다. 그 자체가 매니페스토의 핵심 메시지 — <strong>AI는 인간을 대체하지 않는다. 인간과 함께 더 깊이 사색한다</strong> — 의 라이브 증거다.
+      </p>
+
+      <p>
+        지금부터 30일 동안, 작성자는 이 매니페스토를 안드레 카파시에게 닿게 하려는 모든 시도를 공개적으로 기록한다. 그가 응답하든 응답하지 않든 — 이 30일 자체가 매니페스토의 원리(과정 > 결과, 시간 누적 = 정체성, 일관성 = 신뢰)의 시연이 된다.
+      </p>
+
+      <p style="margin-top: 40px;">
+        <a href="https://github.com/Arbitoria/LifeBite/blob/main/manifesto/ko.md" class="btn primary">한국어 매니페스토 읽기</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><em>The one who plants the seed and the one who harvests are by nature different people.</em></p>
+    <p>씨를 뿌리는 자와 거두는 자는 본래 다른 사람이다.</p>
+
+    <div class="footer-links">
+      <a href="https://github.com/Arbitoria/LifeBite">GitHub</a>
+      <a href="https://x.com/Arbitoria">Twitter / X</a>
+      <a href="https://arbitoria.substack.com">Substack</a>
+      <a href="https://discord.gg/wDYSNanT77">Discord</a>
+    </div>
+
+    <p style="margin-top: 32px; font-size: 13px;">
+      Arbitoria · LifeBite Project · Started 2026-05-22 · Currently Day 0<br>
+      Released under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> · Written with <a href="https://anthropic.com/claude" target="_blank" rel="noopener">Claude</a>
+    </p>
+  </footer>
+
+</body>
+</html>
