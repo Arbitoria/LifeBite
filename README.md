@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="arbitoria_logo.png" alt="Arbitoria" width="200">
+</p>
+
 # LifeBite
 
 ### Notes from After the Pyramid
